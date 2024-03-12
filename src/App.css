@@ -199,11 +199,11 @@ body {
 	gap: 0.225rem;
 }
 
-#header-logo-align {
+/* #header-logo-align {
 	margin: 0.225rem 3.225rem 0.225rem 0;
 	align-items: center;
 	gap: 0.435rem;
-}
+} */
 
 #help-dialog::part(header) {
 	justify-content: flex-start;

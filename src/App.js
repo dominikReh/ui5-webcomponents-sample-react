@@ -73,6 +73,7 @@ function App() {
 	});
 
 	const themeChangeItem = useRef(),
+		//addTabButton = useRef(),
 		addButton = useRef(),
 		todoInput = useRef(),
 		todoDeadline = useRef(),
@@ -194,6 +195,17 @@ function App() {
 		]);
 	}, [setTodos]);
 
+	// const handleAddTab = useCallback(() => {
+	
+	// 	(event) => {
+	// 		var tabContainer = document.querySelector('ui5-tabcontainer');
+	// 		var newTab = document.createElement('ui5-tab');
+	// 		newTab.setAttribute('text', 'New Tab');
+	// 		tabContainer.appendChild(newTab);
+	// 	},
+	// 	[setTodos]
+	// 	);
+
 	const handleRemove = useCallback(
 		(id) => {
 			setTodos((todos) => todos.filter((todo) => todo.id !== id));
@@ -238,6 +250,13 @@ function App() {
 			addButton.current.removeEventListener("click", handleAdd);
 		};
 	}, [handleAdd]);
+
+	// useEffect(() => {
+	// 	addTabButton.current.addEventListener("click", handleAddTab);
+	// 	return () => {
+	// 		addTabButton.current.removeEventListener("click", handleAddTab);
+	// 	};
+	// }, [handleAddTab]);
 
 	useEffect(() => {
 		cancelBtn.current.addEventListener("click", handleCancel);
@@ -304,21 +323,24 @@ function App() {
 
 	return (
 		<div className="app">
-			<ui5-shellbar primary-title="UI5 Web Components React Sample Application" show-notifications notifications-count="2" ref={shellBar}>
+			<ui5-shellbar primary-title="Verteilte Systeme / Todo Anwendung " show-notifications notifications-count="2" ref={shellBar}>
 				<img className="app-header-logo" alt="logo" slot="logo" src={logo} />
 				<ui5-shellbar-item icon="palette" text="Theme" ref={themeChangeItem}></ui5-shellbar-item>
 				<ui5-avatar slot="profile" size="XS" initials="JD"></ui5-avatar>
 			</ui5-shellbar>
 
-			<ui5-tabcontainer fixed collapsed>
+			<ui5-tabcontainer id="tabcontainer" fixed collapsed>
 				<ui5-tab text="My Todos"></ui5-tab>
+				{/* <ui5-button className="add-todo-element-width" ref={addTabButton} design="Emphasized" id="add-Tab-button">
+						Add Tab
+				</ui5-button> */}
 			</ui5-tabcontainer>
 
 			<section className="app-content">
 				<div className="create-todo-wrapper">
 					<ui5-input placeholder="Type a task..." ref={todoInput} className="add-todo-element-width" id="add-input"></ui5-input>
 					<ui5-date-picker format-pattern="dd/MM/yyyy" className="add-todo-element-width" ref={todoDeadline} id="date-picker"></ui5-date-picker>
-					<ui5-button className="add-todo-element-width" ref={addButton} design="Emphasized" id="add-button">
+					<ui5-button className="add-element" ref={addButton} design="Emphasized" id="add-button">
 						Add Todo
 					</ui5-button>
 				</div>
@@ -444,23 +466,16 @@ function App() {
 
 				<div className="help-header" id="header-logo-align">
 					<img className="app-header-logo" alt="logo" slot="logo" src={logo} />
-					<ui5-title level="H5">UI5 Web Components React Sample App</ui5-title>
+					<ui5-title level="H5">Verteilte Systeme / ToDo</ui5-title>
 				</div>
 
 				<p className="help-dialog-text">
-					<b>Release</b>: b225.20220729335 <br></br>
-					<b>Server</b>: 31pc212x3132 <br></br>
-					<b>Timestamp</b>: 2022-07-28T10:29:03.159+0200 <br></br>
-					<b>Company ID</b>: SAP <br></br>
+					<b>Timestamp</b>: 2024-03-12T10:45:00.159+0200 <br></br>
+					<b>Company ID</b>: DomiJannie <br></br>
 					<b>UI version</b>: SAP Fiori <br></br>
-					<b>Edition</b>: Enterprise <br></br>
 					<b>Admin version</b>: React Admin <br></br>
 					<hr></hr>
-					For more information, please visit our{" "}
-					<a href="https://github.com/SAP-samples/ui5-webcomponents-sample-react" target={"_blank"}>
-						documentation
-					</a>
-					.
+					For more information, please write an E-Mail: hilfe@DomiJannie.com
 				</p>
 
 				<div className="dialog-button">
